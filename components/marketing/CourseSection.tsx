@@ -85,7 +85,7 @@ export default function CourseSection() {
   };
 
   return (
-    <section id="courses" className="py-24 bg-white border-t border-slate-100 relative overflow-hidden">
+    <section id="courses" className="py-10 bg-white border-t border-slate-100 relative overflow-hidden">
       
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-50/50 rounded-full blur-[120px] -z-10" />

@@ -13,7 +13,8 @@ const mentors = [
     role: "Ex-SDE III at Amazon",
     image: mentor1,
     bio: "10+ years of experience building scalable backend systems. Master of System Design and Data Structures.",
-    color: "orange" 
+    accent: "text-orange-600",
+    bg: "bg-orange-50/50"
   },
   {
     id: 2,
@@ -21,7 +22,8 @@ const mentors = [
     role: "Senior Frontend Engineer at Meta",
     image: mentor2,
     bio: "React and Next.js expert. Passionate about pixel-perfect UI, web performance, and modern frontend architecture.",
-    color: "cyan"
+    accent: "text-blue-600",
+    bg: "bg-blue-50/50"
   },
   {
     id: 3,
@@ -29,35 +31,32 @@ const mentors = [
     role: "AI/ML Lead at Microsoft",
     image: mentor3,
     bio: "Leading generative AI initiatives. Loves teaching Python, neural networks, and deploying ML models to production.",
-    color: "emerald"
+    accent: "text-emerald-600",
+    bg: "bg-emerald-50/50"
   }
 ];
 
 export default function Mentors() {
   return (
-    <section id="mentors" className="py-32 relative overflow-hidden bg-neutral-950">
+    <section id="mentors" className="py-10 relative overflow-hidden bg-slate-50">
       
-      {/* === BACKGROUND ENHANCEMENTS === */}
-      {/* Subtle Mesh Glows */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
+      {/* Subtle Background Orbs for Light Theme */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-100/40 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-100/40 rounded-full blur-[120px] pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="max-w-2xl text-left mb-16">
-          <div className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white/5 border border-cyan-400/20 backdrop-blur text-cyan-400 font-semibold text-sm mb-6">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute h-full w-full rounded-full bg-cyan-400 opacity-75" />
-              <span className="relative rounded-full h-2.5 w-2.5 bg-cyan-400" />
-            </span>
-            LEARN FROM THE BEST
+        <div className="max-w-2xl text-left mb-20">
+          <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white border border-slate-200 text-slate-600 font-bold text-xs uppercase tracking-widest mb-6 shadow-sm">
+            <span className="flex h-2 w-2 rounded-full bg-blue-500 animate-pulse" />
+            Learn From Industry Leaders
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-            Meet Your <span className="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">Mentors</span>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">
+            Meet Your <span className="text-blue-600">Mentors</span>
           </h2>
-          <p className="text-lg text-neutral-400 leading-relaxed">
-            Our instructors are industry veterans who have cracked top tech companies and are here to help you do the same.
+          <p className="text-lg text-slate-500 leading-relaxed">
+            Our instructors are industry veterans who have built products used by millions and are here to help you scale your career.
           </p>
         </div>
 
@@ -66,54 +65,50 @@ export default function Mentors() {
           {mentors.map((mentor) => (
             <div 
               key={mentor.id}
-              className="group relative flex flex-col bg-white/[0.02] border border-white/10 rounded-[2.5rem] p-5 hover:bg-white/[0.04] transition-all duration-500 hover:-translate-y-2"
+              className="group relative flex flex-col bg-white border border-slate-200 rounded-[2.5rem] p-6 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 hover:-translate-y-2"
             >
-              {/* Card Glow Effect on Hover */}
-              <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[2.5rem]" />
-
-              {/* Image Container */}
-              <div className="relative h-72 w-full mb-6 overflow-hidden rounded-3xl bg-neutral-900/40 border border-white/5 shadow-inner">
+              {/* Image Container - Using object-contain for full visibility */}
+              <div className={`relative h-80 w-full mb-8 overflow-hidden rounded-3xl ${mentor.bg} border border-slate-100`}>
                 <Image
                   src={mentor.image}
                   alt={mentor.name} 
                   fill
-                  className="object-contain p-4 transform group-hover:scale-110 transition-transform duration-700 ease-in-out"
+                  className="object-contain p-6 transform group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
-                {/* Image Bottom Shade */}
-                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-neutral-950 to-transparent opacity-60" />
+                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white/80 to-transparent pointer-events-none" />
               </div>
 
               {/* Content Area */}
               <div className="relative z-10 flex flex-col flex-grow">
-                <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">
+                <div className="flex justify-between items-start mb-3">
+                    <h3 className="text-2xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                       {mentor.name}
                     </h3>
-                    <a href="#" className="p-2 rounded-full bg-white/5 hover:bg-white/10 text-neutral-500 hover:text-white transition-all">
-                       <Linkedin className="w-4 h-4" />
+                    <a href="#" className="p-2 rounded-full bg-slate-50 text-slate-400 hover:text-blue-600 hover:bg-blue-50 transition-all">
+                       <Linkedin className="w-5 h-5" />
                     </a>
                 </div>
                 
-                <div className="inline-flex items-center px-3 py-1 rounded-lg text-[10px] tracking-widest font-black border bg-white/5 text-neutral-300 border-white/10 w-fit mb-4 uppercase">
+                <div className={`inline-flex items-center px-3 py-1 rounded-lg text-[10px] tracking-widest font-bold border ${mentor.bg} ${mentor.accent} border-current/10 w-fit mb-4 uppercase`}>
                   {mentor.role}
                 </div>
                 
-                <p className="text-neutral-400 text-sm leading-relaxed mb-8 line-clamp-3">
+                <p className="text-slate-500 text-sm leading-relaxed mb-8">
                   {mentor.bio}
                 </p>
 
-                <div className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
+                <div className="mt-auto pt-6 border-t border-slate-100 flex items-center justify-between">
                     <div className="flex -space-x-2">
                        {[1,2,3].map(i => (
-                         <div key={i} className="w-7 h-7 rounded-full border-2 border-neutral-950 bg-neutral-800" />
+                         <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-slate-200" />
                        ))}
-                       <div className="w-7 h-7 rounded-full border-2 border-neutral-950 bg-neutral-900 flex items-center justify-center text-[8px] text-white font-bold">
+                       <div className="w-8 h-8 rounded-full border-2 border-white bg-blue-600 flex items-center justify-center text-[8px] text-white font-bold">
                          +5k
                        </div>
                     </div>
-                    <button className="text-[11px] font-bold text-white flex items-center gap-2 group/btn">
-                       FULL BIO 
-                       <ArrowRight className="w-3 h-3 text-cyan-400 group-hover/btn:translate-x-1 transition-transform" />
+                    <button className="text-[11px] font-bold text-slate-900 flex items-center gap-2 group/btn hover:text-blue-600 transition-colors">
+                       VIEW PROFILE 
+                       <ArrowRight className="w-3.5 h-3.5 text-blue-500 group-hover/btn:translate-x-1 transition-transform" />
                     </button>
                 </div>
               </div>
